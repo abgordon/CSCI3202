@@ -1,0 +1,66 @@
+to implement:
+
+**************************search.py*******************
+
+def DFS
+
+def BFS
+
+def UniformCostSearch
+
+def aStarProblem
+
+************************searchAgents.py******************
+
+class corners_problem
+	
+	corners_problem::init(starting game state)
+
+	corners_problem::getstartstate
+
+	corners_problem::isgoalstate
+
+	corners_problem::getsuccessors
+
+	corners_problem::getCostOfActions
+
+def corners heuristic
+
+class AStarCornersAgent
+
+class foodsearchproblem
+	
+	foodsearchproblem::init
+
+	foodsearchproblem::getstartstate
+
+	foodsearchproblem::isgoalstate
+
+	foodsearchproblem::getsuccessors
+
+	foodsearchproblem::getcostofActions
+
+class AStarFoodSearchAgent
+
+def foodHeuristic
+
+Class ClosestDotSearchAgent
+
+	ClosestDotSearchAgent::findpathtoclosestdot
+
+class anyfoodsearchproblem
+
+	anyfoodsearchproblem::init
+
+	anyfoodsearchproblem::isgoalstate
+
+class ApproximateSearchAgent
+
+	ApproximateSearchAgent::registerinitialstate
+
+	ApproximateSearchAgent::getaction
+
+def mazeDistance
+
+
+
