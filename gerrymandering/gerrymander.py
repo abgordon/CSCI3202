@@ -1,14 +1,25 @@
+'''
+Andrew Gordon CSCI3202: Gerrymandering assignment
+
+This is a relaxed gerrymander problem in which we look for up-down columns,rows, or squares
+of size 4.  Min/Max moves are determined by the 'player' argument in the game loop.  Utility is 
+defined as the ratio bounded by 1 < U < c, in which we look for the ratio closest to 1 of your 
+squares/opposing team squares(we do this because we want to steal as many of the other players 
+districts as possible).  You may notice that in some player setups and boards some districts of 
+size 4 are not used; this is because they are a 50/50 split and do not provide any positive utility.  
+
+'''
 
 
-#argparse: grab min and max tree grids from large/small neighborhood
-
-
+#Argument parsing
 import argparse
 import sys
 try:
     in_file = open(sys.argv[1], "r")
 except:
     sys.exit("ERROR. Can't read supplied filename.")
+
+logfile = open("log.txt", "r")
 text = in_file.read()
 
 neighborhood = []
@@ -43,6 +54,7 @@ player2 = 'D'
 
 
 # Begin game definitions
+
 def minmax(player, depth, previousMoves):
 	if depth == 0:
 		return previousMoves #we have fulfilled our amount of moves here; break
@@ -108,12 +120,9 @@ def utility(player,move,previousMoves):
 				counter += 1
 				if counter == 4:
 					possibleMoves.append(temp)
-
-
 	newMove, score = evaluateMove(possibleMoves, player)
 	if newMove != [] and len(previousMoves) <= depth:
 		previousMoves.append(newMove)
-
 	#If nothing, return an empty list and 0 for this move (we iterate over all moves in minmax and find the best possible move there)
 	return previousMoves, score
 
@@ -146,7 +155,6 @@ def evaluateMove(possibleMoves, player):
 			if (rScore/dScore) > 1 and (rScore/dScore) < bestScore:
 				bestMove = possible
 				score = float(rScore/dScore)
-
 
 	return bestMove, score
 
@@ -194,7 +202,7 @@ def printneighborhood(neighborhood):
 
 def printDictionaryNice(dictionary):
 	for i in range(0,length):
-		for j in range(0,length):
+		for j in range(0,length): 
 			move=i,j
 			if move in dictionary:
 				if j%length==0:
